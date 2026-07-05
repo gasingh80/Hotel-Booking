@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmed</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* A few extra styles just for this confirmation box */
+        .success-box {
+            background: white;
+            padding: 3rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 600px;
+            margin: 4rem auto;
+        }
+        .success-box h2 { color: #27ae60; font-size: 2rem; margin-bottom: 1rem; }
+        .success-box p { font-size: 1.2rem; color: #4a5568; margin-bottom: 2rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1>Hotel Explorer</h1>
+            <a href="index.html" style="color: white; text-decoration: none; font-weight: bold;">← Back to Search</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="success-box">
+            <h2>🎉 Booking Confirmed!</h2>
+            <p id="confirmation-message">Processing your booking...</p>
+            <a href="index.html" class="book-btn" style="display: inline-block; width: auto; text-decoration: none;">Return to Home</a>
+        </div>
+    </main>
+
+    <script>
+        // This script grabs the hotel name out of the web address (URL)
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const hotelName = params.get('hotel');
+            
+            const messageEl = document.getElementById('confirmation-message');
+            
+            if (hotelName) {
+                messageEl.innerHTML = `Thank you! Your room at <strong>${hotelName}</strong> has been successfully booked. Have a great trip!`;
+            } else {
+                messageEl.innerHTML = "Thank you for your booking!";
+            }
+        });
+    </script>
+</body>
+</html>
